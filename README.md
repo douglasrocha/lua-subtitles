@@ -1,2 +1,2 @@
-# luasrt
-A library that allows users to adjust srt files
+# lua-subtitles
+A library that allows users to adjust and synchronize subtitle files
