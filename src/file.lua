@@ -23,6 +23,7 @@ function print_lines(lines)
   end
 end
 
+-- write new file with lines passed by parameter
 function write_file(file, lines)
   local f = io.open(file, "w")
   for i = 1, #lines do
@@ -30,7 +31,3 @@ function write_file(file, lines)
   end
   f:close()
 end
-
--- print_lines(get_all_lines('/home/douglas/teste.txt'))
-
-write_file('/home/douglas/output.txt', {"Linha 1\n", "Linha 2\n"})
