@@ -10,7 +10,7 @@ function is_line_time_range(line)
   return is_match(line, REGEX_PATTERN)
 end
 
-function add_time(timestamp, miliseconds)
+function timestamp_to_milisecond(timestamp)
   local values = {}
 
   for value in timestamp:gmatch('%d+') do
@@ -22,6 +22,11 @@ function add_time(timestamp, miliseconds)
                        + values[3] * 1000 
                        + values[4]
 
+  return timestamp_msec
+end
+
+function add_time(timestamp, miliseconds)
+  local timestamp_msec = timestamp_to_milisecond(timestamp)
   local msec_out = timestamp_msec + miliseconds 
   local unit = {3600000, 60000, 1000, 1}
   local str_out = ''
@@ -40,5 +45,18 @@ function add_time(timestamp, miliseconds)
   return str_out .. msec_out
 end
 
+function compare_timestamp(timestamp1, timestamp2)
+  local t1msec = timestamp_to_milisecond(timestamp1)
+  local t2msec = timestamp_to_milisecond(timestamp2)
 
-print(add_time("1:12:52,312", 1500))
+  if t1msec > t2msec then return 1
+  else if t2msec > t1msec then return 2
+  
+  return 0
+end
+
+
+
+
+
+
