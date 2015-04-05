@@ -20,7 +20,13 @@ function miliseconds_to_timestamp(miliseconds)
 
   for i=1,3 do
     local amount = math.floor(remainder / unit[i])
-    str_out = str_out .. amount
+    local amount_str = ''
+
+    if amount < 10 then amount_str = '0' .. amount
+    else amount_str = amount
+    end
+
+    str_out = str_out .. amount_str
 
     if i == 3 then str_out = str_out .. ':'
     else str_out = str_out .. ','
@@ -29,5 +35,26 @@ function miliseconds_to_timestamp(miliseconds)
     remainder = remainder % unit[i]
   end
 
+  if remainder < 10 then return str_out .. '00' .. remainder
+  elseif remainder < 100 then return str_out .. '0' .. remainder
+  end
+
   return str_out .. remainder   
+end
+
+function add_time(timestamp, miliseconds)
+  local timestamp_msec = timestamp_to_miliseconds(timestamp)
+  timestamp_msec = timestamp_msec + miliseconds
+  return miliseconds_to_timestamp(timestamp_msec)
+end
+
+function compare_timestamps(timestamp1, timestamp2)
+  local t1msec = timestamp_to_miliseconds(timestamp1)
+  local t2msec = timestamp_to_miliseconds(timestamp2)
+
+  if t1msec > t2msec then return 1
+  elseif t2msec > t1msec then return 2
+  end
+
+  return 0
 end
