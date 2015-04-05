@@ -30,13 +30,6 @@ function get_all_lines(file)
   return lines
 end
 
--- print all line numbers and their contents
-function print_lines(lines) 
-  for k,v in pairs(lines) do
-    print('lines[' .. k .. ']', v)
-  end
-end
-
 -- write new file with lines passed by parameter
 function write_file(file, lines)
   local f = io.open(file, "w")
