@@ -19,7 +19,7 @@ function miliseconds_to_timestamp(miliseconds)
   local remainder = miliseconds
 
   for i=1,3 do
-    local amount = math.floor(msec_out / unit[i])
+    local amount = math.floor(remainder / unit[i])
     str_out = str_out .. amount
 
     if i == 3 then str_out = str_out .. ':'
