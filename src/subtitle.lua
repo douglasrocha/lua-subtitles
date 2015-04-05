@@ -22,10 +22,30 @@ TIMESTAMP_PATTERN = '%d+:%d+:%d+,%d+'
 REGEX_PATTERN = TIMESTAMP_PATTERN .. ' [-][-][>] ' .. TIMESTAMP_PATTERN
 
 function is_line_time_range(line)
+-------------------------------------------------
+-- Checks whether the line passed by parameter
+-- has a valid SRT time range pattern
+-- Parameters:
+-- line : Any line from the srt file
+-------------------------------------------------
   return is_match(line, REGEX_PATTERN)
 end
 
 function add_miliseconds_to_file(file, ms, file_out, from, to)
+-------------------------------------------------
+-- Main method from the lua-subtitles script. It
+-- receives all the parameters, iterates line
+-- by line in the srt file adding miliseconds to
+-- every timstamp
+-- Parameters:
+-- file : The file path of the input file
+-- ms : The amount of miliseconds you wish to add
+-- file_out : The file path of the output file
+-- from : The timestamp you wish to start to
+--        consider adding miliseconds
+-- to : The timestamp you wish to stop to 
+--      consider adding miliseconds
+-------------------------------------------------
   local is_from_nil = from == nil
   local is_to_nil = to == nil
 

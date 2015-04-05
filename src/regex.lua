@@ -15,6 +15,13 @@
 -- checks whether input string matches the specified
 -- regex pattern
 function is_match(input, regex)
+-------------------------------------------------
+-- Given a specified regex pattern, returns true
+-- if input matches that pattern and false if not
+-- Parameters
+-- Input : Input string
+-- Regex : Regex patterh
+-------------------------------------------------
   if string.match(input, regex) == nil then
     return false
   end

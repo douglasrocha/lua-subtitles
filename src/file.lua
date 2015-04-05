@@ -12,16 +12,25 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
--- see if the file exists
 function file_exists(file)
+-------------------------------------------------
+--   Checks whether the file exists or not and 
+-- returns a boolean
+-- Parameters:
+-- File : File path string
+--------------------------------------------
   local f = io.open(file, "r");
   if f then f:close() end
   return f ~= nil
 end
 
--- set all lines from a file, returns an empty
--- list/table if the file does not exist
 function get_all_lines(file)
+-------------------------------------------------
+--   Get all the lines from a file. Returns an
+-- empty table if the file does not exist
+-- Parameters:
+-- File : File path string
+--------------------------------------------
   if not file_exists(file) then return {} end
   lines = {}
   for line in io.lines(file) do
@@ -30,8 +39,14 @@ function get_all_lines(file)
   return lines
 end
 
--- write new file with lines passed by parameter
 function write_file(file, lines)
+-------------------------------------------------
+-- Writes a file with the lines passed by 
+-- parameter
+-- Parameters:
+-- File : File path string
+-- Lines : An array of lines to be written
+--------------------------------------------
   local f = io.open(file, "w")
   for i = 1, #lines do
     f:write(lines[i])

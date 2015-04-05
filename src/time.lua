@@ -13,6 +13,11 @@
 -- limitations under the License.
 
 function timestamp_to_miliseconds(timestamp)
+-------------------------------------------------
+-- Converts timestamp to miliseconds string
+-- Parameters:
+-- timestamp : The timestamp to be converted
+-------------------------------------------------
   local values = {}
 
   for value in timestamp:gmatch('%d+') do
@@ -28,6 +33,11 @@ function timestamp_to_miliseconds(timestamp)
 end
 
 function miliseconds_to_timestamp(miliseconds)
+-------------------------------------------------
+-- Converts miliseconds to timestamp string
+-- Parameters:
+-- miliseconds : The miliseconds to be converted
+-------------------------------------------------
   local unit = {3600000, 60000, 1000, 1}
   local str_out = ''
   local remainder = miliseconds
@@ -57,12 +67,26 @@ function miliseconds_to_timestamp(miliseconds)
 end
 
 function add_time(timestamp, miliseconds)
+-------------------------------------------------
+-- Adds miliseconds to a timestamp
+-- Parameters:
+-- timestamp : The timestamp
+-- miliseconds : The miliseconds
+-------------------------------------------------
   local timestamp_msec = timestamp_to_miliseconds(timestamp)
   timestamp_msec = timestamp_msec + miliseconds
   return miliseconds_to_timestamp(timestamp_msec)
 end
 
 function compare_timestamps(timestamp1, timestamp2)
+-------------------------------------------------
+-- Given two timestamps, returns 1 if the first
+-- one is bigger, 2 if the second one is bigger
+-- or 0 if they are equal
+-- Parameters:
+-- timestamp1 : First timestamp
+-- timestamp2 : Second timestamp
+-------------------------------------------------
   local t1msec = timestamp_to_miliseconds(timestamp1)
   local t2msec = timestamp_to_miliseconds(timestamp2)
 
