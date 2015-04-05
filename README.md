@@ -20,6 +20,7 @@ to (optional)       | The timestamp you want to stop considering (format: hh:mm:
 - Only valid srt files can be processed by the script. It doesn't guarantee to fix your invalid srt files.
 - If you want to use only the to parameter, make sure to write 'nil' (without escapes) to the from parameter
 - Except for the miliseconds parameter, escape every other parameter
+- Inside test/ there is a valid srt input file to test the application
 
 ## Git Page
 - https://github.com/douglasrocha/lua-subtitles
