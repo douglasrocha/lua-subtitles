@@ -28,8 +28,8 @@ function miliseconds_to_timestamp(miliseconds)
 
     str_out = str_out .. amount_str
 
-    if i == 3 then str_out = str_out .. ':'
-    else str_out = str_out .. ','
+    if i == 3 then str_out = str_out .. ','
+    else str_out = str_out .. ':'
     end
 
     remainder = remainder % unit[i]
